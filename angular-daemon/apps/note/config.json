@@ -1,0 +1,9 @@
+{
+  "isDaemon": "true",
+  "controller": "Controller.js",
+  "templateMode": "typescript",
+  "application": "note",
+  "orcaSubscriptions": {
+    "Signup": "#do* | entered.stage | fulfilled.requirement | succeeded.activity | errored.activity"
+  }
+}

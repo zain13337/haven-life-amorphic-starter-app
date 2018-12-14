@@ -1,0 +1,17 @@
+{
+  "templateMode":"typescript",
+  "port": 3001,
+  "sessionSeconds": 300,
+  "objectCacheSeconds": 10,
+  "sessionSecret": "Ey0veeljPcLsHitdxCG2",
+	"applications": {
+    "note": "apps/note"
+  },
+	"application": "note",
+  "dbdriver": "knex",
+  "dbtype": "pg",
+  "dbpath": "localhost",
+  "dbname": "amorphic_notes",
+  "dbuser": "nodejs",
+  "dbpassword": "nodejs"
+}

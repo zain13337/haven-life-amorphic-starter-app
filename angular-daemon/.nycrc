@@ -1,0 +1,12 @@
+{
+    "check-coverage": true,
+    "include": [
+        "dist/apps/**/*.js"
+    ],
+    "reporter": [
+        "lcov",
+        "text-summary"
+    ],
+    "all": true,
+    "lines": 80
+}

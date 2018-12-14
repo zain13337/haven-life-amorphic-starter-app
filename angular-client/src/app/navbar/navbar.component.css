@@ -1,0 +1,8 @@
+nav {
+    display: flex;
+    margin: 10px 15px;
+}
+
+.flex-spacer {
+    flex-grow: 1;
+}

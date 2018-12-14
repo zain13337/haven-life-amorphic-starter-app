@@ -1,0 +1,23 @@
+{
+  "Note": {
+    "table": "notes",
+    "enableChangeTracking": true,
+    "parents": {
+      "author": {
+        "id": "author_id",
+        "fetch": true
+      }
+    }
+  },
+  "Author": {
+    "table": "authors",
+    "enableChangeTracking": true,
+    "children": {
+      "notes": {
+        "id": "author_id",
+        "fetch": true,
+        "pruneOrphans": true
+      }
+    }
+  }
+}

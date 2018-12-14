@@ -1,0 +1,20 @@
+<div *ngIf="note">
+  <h2>{{note.title}}</h2>
+  <p><strong>Author: </strong>{{note.author.name}}</p>
+  <p>{{note.body}}</p>
+  <hr/>
+  <h4>Edit:</h4>
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="note.title" placeholder="Title">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <textarea matInput [(ngModel)]="note.body" placeholder="Body"></textarea>
+    </mat-form-field>
+  </div>
+  <button (click)="save()">save</button>
+  <button (click)="delete()">delete</button>
+  <button (click)="goBack()">go back</button>
+</div>
