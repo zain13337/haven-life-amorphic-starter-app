@@ -14,8 +14,8 @@ export class DashboardComponent implements OnInit, Loadable {
 
   constructor(private noteService: NoteService) { }
 
-  async ngOnInit() {
-    await this.getNotes();
+  ngOnInit() {
+    this.getNotes();
   }
 
   getNotes(): void {
