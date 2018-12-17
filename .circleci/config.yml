@@ -30,10 +30,10 @@ jobs:
       - run:
           name: daemon test
           command: npm run test
-          working_directory: ~/angular-daemon
+          working_directory: angular-daemon
 
       # linting
       - run:
           name: daemon lint
           command: npm run lint
-          working_directory: ~/angular-daemon
+          working_directory: angular-daemon
