@@ -5,9 +5,9 @@ jobs:
       - image: circleci/node:8.10.0
       - image: circleci/redis:latest
       - image: circleci/postgres:latest
-          environment:
-            POSTGRES_USER: postgres
-            POSTGRES_DB: test
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: test
     steps:
       - checkout
       # Download and cache dependencies
