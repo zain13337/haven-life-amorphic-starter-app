@@ -5,38 +5,38 @@ jobs:
       - image: circleci/node:8.10.0
       - image: circleci/redis:latest
       - image: circleci/postgres:latest
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: test
+          environment:
+            POSTGRES_USER: postgres
+            POSTGRES_DB: test
     steps:
       - checkout
       # Download and cache dependencies
       - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
       - run:
-        name: npm-install
-        command: npm install
+          name: npm-install
+          command: npm install
 
       - save_cache:
-        key: v1-dependencies-{{ checksum "package.json" }}
-        paths:
-          - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+              - node_modules
 
       # multi project repo, need to cd into angular daemon folder to test
       - run:
-        name: amorphic-daemon-pipeline
-        command: cd angular-daemon
+          name: amorphic-daemon-pipeline
+          command: cd angular-daemon
 
       # unit tests
       - run:
-        name: test
-        command: npm run test
+          name: test
+          command: npm run test
 
       # linting
       - run:
-        name: lint
-        command: npm run lint
+          name: lint
+          command: npm run lint
