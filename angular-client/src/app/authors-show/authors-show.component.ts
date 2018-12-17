@@ -4,14 +4,16 @@ import { Location } from '@angular/common';
 
 import { AuthorService } from '../author.service';
 import { Author } from '../models';
+import { Loadable } from '../interfaces';
 
 @Component({
   selector: 'app-authors-show',
   templateUrl: './authors-show.component.html',
   styleUrls: ['./authors-show.component.css']
 })
-export class AuthorsShowComponent implements OnInit {
+export class AuthorsShowComponent implements OnInit, Loadable {
   @Input() author: Author;
+  isLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,9 +27,13 @@ export class AuthorsShowComponent implements OnInit {
   }
 
   getAuthor(): void {
+    this.isLoaded = false;
     const id = this.route.snapshot.paramMap.get('id');
     this.authorService.getAuthor(id)
-      .subscribe(author => this.author = author);
+      .subscribe(author => {
+        this.author = author;
+        this.isLoaded = true;
+      });
   }
 
   save(): void {
