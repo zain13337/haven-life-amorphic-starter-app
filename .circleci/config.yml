@@ -29,6 +29,12 @@ jobs:
               - node_modules
           working_directory: angular-daemon
 
+      # compile
+      - run:
+          name: daemon compile
+          command: npm run compile
+          working_directory: angular-daemon
+
       # unit tests
       - run:
           name: daemon test
