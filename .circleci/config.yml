@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-amorphic-daemon:
     docker:
       - image: circleci/node:8.10.0
       - image: circleci/redis:latest
@@ -8,6 +8,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: test
+        working_directory: ~/angular-daemon
     steps:
       - checkout
       # Download and cache dependencies
@@ -25,11 +26,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
               - node_modules
-
-      # multi project repo, need to cd into angular daemon folder to test
-      - run:
-          name: amorphic-daemon-pipeline
-          command: cd angular-daemon
 
       # unit tests
       - run:
