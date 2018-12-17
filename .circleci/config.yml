@@ -13,10 +13,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-          working_directory: angular-daemon
+          - v1-dependencies-{{ checksum "angular-daemon/package.json" }}
 
       - run:
           name: npm-install
@@ -24,10 +21,9 @@ jobs:
           working_directory: angular-daemon
 
       - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "angular-daemon/package.json" }}
           paths:
-              - node_modules
-          working_directory: angular-daemon
+              - angular-daemon/node_modules
 
       # compile
       - run:
