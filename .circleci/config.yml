@@ -8,7 +8,6 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: test
-    working_directory: angular-daemon
     steps:
       - checkout
       # Download and cache dependencies
@@ -17,22 +16,27 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+          working_directory: angular-daemon
 
       - run:
           name: npm-install
           command: npm install
+          working_directory: angular-daemon
 
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
               - node_modules
+          working_directory: angular-daemon
 
       # unit tests
       - run:
           name: daemon test
           command: npm run test
+          working_directory: angular-daemon
 
       # linting
       - run:
           name: daemon lint
           command: npm run lint
+          working_directory: angular-daemon
