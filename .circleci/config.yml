@@ -8,6 +8,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: test
+    working_directory: angular-daemon
     steps:
       - checkout
       # Download and cache dependencies
@@ -30,10 +31,8 @@ jobs:
       - run:
           name: daemon test
           command: npm run test
-          working_directory: angular-daemon
 
       # linting
       - run:
           name: daemon lint
           command: npm run lint
-          working_directory: angular-daemon
