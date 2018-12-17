@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-amorphic-daemon:
+  build:
     docker:
       - image: circleci/node:8.10.0
       - image: circleci/redis:latest
