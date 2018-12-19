@@ -1,0 +1,25 @@
+{
+  "include": [
+    "./apps/**/*",
+    "./test/**/*",
+    "server.ts"
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es5",
+      "es2015.promise",
+      "es6"
+    ],
+    "outDir": "./dist/",
+    "noImplicitAny": false,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "sourceMap": true
+  }
+}

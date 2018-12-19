@@ -1,0 +1,12 @@
+<h2>All Notes</h2>
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let note of notes" routerLink="/notes/{{note._id}}">
+    <mat-grid-tile-header>
+      <p>
+        <strong>{{note.title}}</strong><br/>
+        <small>{{note.author.name}}</small>
+      </p>
+    </mat-grid-tile-header>
+    {{note.body}}
+  </mat-grid-tile>
+</mat-grid-list>

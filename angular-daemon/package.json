@@ -1,0 +1,42 @@
+{
+  "name": "angular-daemon",
+  "description": "Amorphic daemon mode playground application",
+  "scripts": {
+    "start": "nodemon ./dist/server.js",
+    "debug": "node --inspect ./dist/server.js",
+    "compile": "tsc",
+    "compile:watch": "tsc  --watch",
+    "lint": "tslint --project ./tsconfig.json --config ./tslint.json './apps/**/*.ts'",
+    "copyStatics": "cp config.json ./dist/ && cp apps/note/*.json dist/apps/note/ ",
+    "test": "mocha ./dist/test/unit/**/*.js",
+    "coverage": "nyc mocha ./dist/test/unit/**/*.js"
+  },
+  "private": true,
+  "dependencies": {
+    "amorphic": "4.0.0-beta.2",
+    "body-parser": "^1.18.3",
+    "connect-redis": "3.3.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.2",
+    "semotus": "^2.4.0",
+    "supertype": "3.*",
+    "tslint": "~5.9.1"
+  },
+  "devDependencies": {
+    "@types/chai": "3.5.2",
+    "@types/express": "^4.16.0",
+    "@types/mocha": "5.2.5",
+    "@types/node": "^10.5.2",
+    "@types/sinon": "^5.0.7",
+    "axios": "^0.18.0",
+    "chai": "4.1.0",
+    "mocha": "5.2.*",
+    "nodemon": "^1.18.3",
+    "nyc": "^13.1.0",
+    "sinon": "4.2.1",
+    "ts-mocha": "2.0.0",
+    "ts-node": "7.0.*",
+    "typescript": "3.2.1"
+  }
+}

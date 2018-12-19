@@ -1,0 +1,10 @@
+<h2>All Authors</h2>
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let author of authors" routerLink="/authors/{{author._id}}">
+    <mat-grid-tile-header>
+      <p>
+        <strong>{{author.name}}</strong><br/>
+      </p>
+    </mat-grid-tile-header>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.10.0
+      - image: circleci/redis:latest
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: test
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "angular-daemon/package.json" }}
+
+      - run:
+          name: npm-install
+          command: npm install
+          working_directory: angular-daemon
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "angular-daemon/package.json" }}
+          paths:
+              - angular-daemon/node_modules
+
+      # compile
+      - run:
+          name: daemon compile
+          command: npm run compile
+          working_directory: angular-daemon
+
+      # unit tests
+      - run:
+          name: daemon test
+          command: npm run test
+          working_directory: angular-daemon
+
+      # linting
+      - run:
+          name: daemon lint
+          command: npm run lint
+          working_directory: angular-daemon
