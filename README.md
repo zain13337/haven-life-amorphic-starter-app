@@ -1,6 +1,6 @@
 # amorphic-starter-app
 
-A simple Notes app using amorphic and orca with an angular frontend
+A simple Notes app using amorphic with an angular frontend
 
 This application also utilizes an AmorphicSerializer and AmorphicDeserializer to serialize the Supertype/Amorphic objects into JSON from the amorphic side and then deserialize those objects on the angular front end into POJOs (plain javascript objects).
 
