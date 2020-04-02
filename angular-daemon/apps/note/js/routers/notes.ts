@@ -10,9 +10,9 @@ export function notesRouter(router: Router) {
             let note = Note.new(title, body, author);
             note = await note.save();
             return res.json(note.serialize());
-        })
-        // READ:
-        .get(`${path}/`, async (req: Request, res: Response) => {
+        });
+
+    router.get(`${path}/`, async (req: Request, res: Response) => {
             const notes: Note[] = await Note.all();
             const serializedNotes: object[] = notes.map( (note) => note.serialize());
             return res.json(serializedNotes);

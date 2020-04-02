@@ -13,7 +13,8 @@
   },
   "private": true,
   "dependencies": {
-    "amorphic": "4.0.0",
+    "amorphic": "5.5.0",
+    "@havenlife/persistor": "3.2.6-beta.1",
     "body-parser": "^1.18.3",
     "connect-redis": "3.3.3",
     "express": "^4.16.3",
