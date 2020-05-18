@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.10.0
+      - image: circleci/node:12.14.1
       - image: circleci/redis:latest
       - image: circleci/postgres:latest
         environment:
@@ -31,10 +31,16 @@ jobs:
           command: npm run compile
           working_directory: angular-daemon
 
+      # audit
+      - run:
+          name: daemon audit
+          command: npm audit
+          working_directory: angular-daemon
+
       # unit tests
       - run:
           name: daemon test
-          command: npm run test
+          command: npm run test:coverage
           working_directory: angular-daemon
 
       # linting

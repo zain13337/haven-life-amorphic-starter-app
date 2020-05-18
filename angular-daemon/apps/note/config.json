@@ -1,9 +1,11 @@
 {
-  "isDaemon": "true",
+  "serverMode": "api",
+  "serverOptions": {
+    "apiPath": "/api"
+  },
+  "persistorBucketName": "test-bucket-persistor",
+  "persistorRemoteDocEnvironment": "local",
   "controller": "Controller.js",
   "templateMode": "typescript",
-  "application": "note",
-  "orcaSubscriptions": {
-    "Signup": "#do* | entered.stage | fulfilled.requirement | succeeded.activity | errored.activity"
-  }
+  "application": "note"
 }

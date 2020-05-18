@@ -7,7 +7,7 @@
 	"applications": {
     "note": "apps/note"
   },
-	"application": "note",
+  "application": "note",
   "dbdriver": "knex",
   "dbtype": "pg",
   "dbpath": "localhost",
