@@ -26,19 +26,19 @@ describe('Notes', () => {
 
     describe('.save', () => {
         it('should return a saved note object with a persistor id', async () => {
-            note.persistorSave = ({ transaction: any }) => {};
+            note.setDirty = (transaction: string) => {};
 
             let amorphicBeginStub: sinon.SinonStub = sandbox.stub(note.amorphic, 'begin').returns('txn');
             let commitStub: sinon.SinonStub = sandbox.stub(note.amorphic, 'commit');
-            let persistorSaveStub: sinon.SinonStub = sandbox.stub(note, 'persistorSave');
+            let setDirtyStub: sinon.SinonStub = sandbox.stub(note, 'setDirty');
 
             try {
                 let result = await note.save();
                 assert(amorphicBeginStub.called);
                 assert(commitStub.called);
                 assert(commitStub.calledWith({ transaction: 'txn' }));
-                assert(persistorSaveStub.called);
-                assert(result === note);
+                assert(setDirtyStub.called);
+                assert(result === note)
             }
             catch (err) {
                 throw new Error(err);
@@ -49,17 +49,17 @@ describe('Notes', () => {
     describe('.update', () => {
         it('should return an updated note object with the persistor id and new name', async () => {
 
-            note.persistorSave = (transaction: any) => { };
+            note.setDirty = (transaction: string) => { };
 
             let amorphicBeginStub: sinon.SinonStub = sandbox.stub(note.amorphic, 'begin');
             let commitStub: sinon.SinonStub = sandbox.stub(note.amorphic, 'commit');
-            let persistorSaveStub: sinon.SinonStub = sandbox.stub(note, 'persistorSave');
+            let setDirtyStub: sinon.SinonStub = sandbox.stub(note, 'setDirty');
 
             try {
                 let result = await note.update('newName', 'bodyString', author);
                 assert(amorphicBeginStub.called);
                 assert(commitStub.called);
-                assert(persistorSaveStub.called);
+                assert(setDirtyStub.called);
                 expect(note.title).to.equal('newName');
                 expect(note.body).to.equal('bodyString');
             }

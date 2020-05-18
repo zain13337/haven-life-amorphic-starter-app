@@ -57,7 +57,7 @@ export default class Note extends Persistable(Supertype) {
 
   public async save() {
     const txn = this.amorphic.begin();
-    this.persistorSave({ transaction: txn });
+    this.setDirty(txn);
     await this.amorphic.commit({ transaction: txn });
     return this;
   }
