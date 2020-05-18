@@ -3,6 +3,8 @@
   "serverOptions": {
     "apiPath": "/api"
   },
+  "persistorBucketName": "test-bucket-persistor",
+  "persistorRemoteDocEnvironment": "local",
   "controller": "Controller.js",
   "templateMode": "typescript",
   "application": "note"

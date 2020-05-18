@@ -31,10 +31,16 @@ jobs:
           command: npm run compile
           working_directory: angular-daemon
 
+      # audit
+      - run:
+          name: daemon audit
+          command: npm audit
+          working_directory: angular-daemon
+
       # unit tests
       - run:
           name: daemon test
-          command: npm run test
+          command: npm run test:coverage
           working_directory: angular-daemon
 
       # linting

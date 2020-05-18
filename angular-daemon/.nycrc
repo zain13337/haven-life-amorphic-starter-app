@@ -1,7 +1,7 @@
 {
     "check-coverage": true,
     "include": [
-        "dist/apps/**/*.js"
+        "apps/**/*.ts"
     ],
     "reporter": [
         "lcov",

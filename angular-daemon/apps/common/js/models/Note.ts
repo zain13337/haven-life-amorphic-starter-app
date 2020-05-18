@@ -5,10 +5,14 @@ import Author from './Author';
 
 @supertypeClass
 export default class Note extends Persistable(Supertype) {
+
   @property()
   title: string;
 
-  @property()
+  @property({
+    isRemoteObject: true,
+    remoteKeyBase: 'document-doc-key'
+  })
   body: string;
 
   @property({ getType: () => Author })
@@ -53,7 +57,7 @@ export default class Note extends Persistable(Supertype) {
 
   public async save() {
     const txn = this.amorphic.begin();
-    this.setDirty(txn);
+    this.persistorSave({ transaction: txn });
     await this.amorphic.commit({ transaction: txn });
     return this;
   }
@@ -73,5 +77,4 @@ export default class Note extends Persistable(Supertype) {
   public serialize() {
     return JSON.parse(AmorphicSerializer.amorphicSerialize(this));
   }
-
 }

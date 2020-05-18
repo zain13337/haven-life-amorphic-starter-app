@@ -1,7 +1,6 @@
 {
   "include": [
     "./apps/**/*",
-    "./test/**/*",
     "server.ts"
   ],
   "compilerOptions": {
